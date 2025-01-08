@@ -1,0 +1,21 @@
+python-aws-microservices-ecs
+
+source .venv/bin/activate
+
+pip install -r hello_api/requirements.txt
+
+python hello_api/server.py
+
+
+#############
+
+cdk init app --language python
+
+pip install -r requirements.txt
+
+cdk synth
+
+cdk deploy --all --require-approval never
+
+
+cdk destroy --all --force
