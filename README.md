@@ -1,104 +1,87 @@
 # cdk-fargate-hello
 
-## CDK Bootstrap Script
+This project demonstrates a containerized application deployed using AWS Fargate and managed via AWS CDK in Python.
 
-This script automates the creation, deletion, and status check of the AWS CDK bootstrap stack. It dynamically determines the AWS account and region, allowing seamless integration with AWS environments. It also supports the use of existing AWS credentials or assumes a role if provided.
+- The application logic resides in the `src/hello_api` directory.
+- The infrastructure is defined in the `src/infra` directory.
 
-### Features
+---
 
-- **Create**: Bootstraps the AWS environment for CDK deployments with a custom stack name.
-- **Delete**: Removes the CDK bootstrap stack and associated resources.
-- **Check**: Verifies the existence and status of the CDK bootstrap stack.
-- **Role Assumption**: Supports execution using a specified IAM Role ARN.
-- **Validation**: Ensures AWS credentials are set either through environment variables or role assumption.
+## **Getting Started**
 
-### Prerequisites
+### **1. Prerequisites**
 
-- **AWS CLI**: Installed and configured on your system.
-- **AWS CDK**: Installed globally using Node.js (`npm install -g aws-cdk`).
-- Sufficient IAM permissions to:
-  - Create and delete CloudFormation stacks.
-  - Manage resources like S3 buckets.
+Before working with this project, ensure the following tools are installed and configured:
 
-### Usage
+1. **Python**:
+   - Install Python 3.7 or higher.
+   - Verify the installation:
 
-#### Syntax
+     ```bash
+     python --version
+     ```
 
-```bash
-./script.sh <create|delete|check> [role-arn]
+2. **AWS CLI**:
+   - Install the AWS CLI and configure credentials for your AWS account:
+
+     ```bash
+     aws configure
+     ```
+
+3. **npm (Node.js)**:
+   - Install Node.js, which includes npm.
+     - [Download and install Node.js](https://nodejs.org/).
+   - Verify the installation:
+
+     ```bash
+     npm --version
+     ```
+
+4. **AWS CDK Toolkit**:
+   - Install the AWS CDK CLI globally:
+
+     ```bash
+     npm install -g aws-cdk
+     ```
+
+   - Verify the installation:
+
+     ```bash
+     cdk --version
+     ```
+
+5. **Docker**:
+   - Ensure Docker is installed and running to build container images for the application.
+     - Verify Docker:
+
+       ```bash
+       docker --version
+       ```
+
+---
+
+## **Project Structure**
+
+```plaintext
+.
+├── LICENSE                       # License for the project
+├── NOTES.txt                     # Miscellaneous notes for the project
+├── README.md                     # This file
+└── src
+    ├── hello_api                 # Application logic and Dockerfile
+    │   ├── config.py
+    │   ├── Dockerfile
+    │   ├── requirements.txt
+    │   └── server.py
+    └── infra
+        └── infra                 # Infrastructure code (AWS CDK)
+            ├── app.py
+            ├── infra_stack.py
+            └── __init__.py
 ```
 
-#### Parameters
+---
 
-- `<create|delete|check>`: The operation to perform:
-  - `create`: Creates the CDK bootstrap stack.
-  - `delete`: Deletes the CDK bootstrap stack.
-  - `check`: Checks the status of the CDK bootstrap stack.
-- `[role-arn]` (Optional): The ARN of the IAM role to assume for execution. If not provided, the script uses existing AWS environment variables.
+## **License**
 
-#### Examples
-
-##### Create the CDK Bootstrap Stack
-
-Using existing AWS credentials:
-
-```bash
-./script.sh create
-```
-
-Assuming an IAM role:
-
-```bash
-./script.sh create arn:aws:iam::123456789012:role/MyRole
-```
-
-##### Delete the CDK Bootstrap Stack
-
-Using existing AWS credentials:
-
-```bash
-./script.sh delete
-```
-
-Assuming an IAM role:
-
-```bash
-./script.sh delete arn:aws:iam::123456789012:role/MyRole
-```
-
-##### Check the CDK Bootstrap Stack Status
-
-Using existing AWS credentials:
-
-```bash
-./script.sh check
-```
-
-Assuming an IAM role:
-
-```bash
-./script.sh check arn:aws:iam::123456789012:role/MyRole
-```
-
-### Environment Variables
-
-- `AWS_ACCESS_KEY_ID`: The access key for AWS.
-- `AWS_SECRET_ACCESS_KEY`: The secret key for AWS.
-- `AWS_SESSION_TOKEN`: The session token for AWS (if using temporary credentials).
-- `AWS_DEFAULT_REGION`: The default AWS region.
-
-### Error Handling
-
-- The script exits with an error message if:
-  - Required AWS credentials are not set.
-  - The provided role ARN is invalid or cannot be assumed.
-  - The CloudFormation stack operation fails.
-
-### Notes
-
-- For resources like S3 buckets that are not automatically cleaned up by CloudFormation, manual deletion may be required after running the `delete` operation.
-- The script is idempotent, meaning you can safely rerun it without unintended side effects.
-
-### License
-
-This script is provided "as-is" without warranty of any kind. Use at your own risk.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
