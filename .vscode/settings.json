@@ -1,40 +1,30 @@
 {
-  "eslint.enable": true,
-  "files.associations": {
-    "*.sh.tpl": "shellscript"
-  },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "__debug_bin": true,
-    "vendor/": true,
-    "go.sum": true
-  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "python.testing.pytestArgs": [
+    "."
+  ],
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
   "files.insertFinalNewline": true,
-  "remote.extensionKind": {
-    "ms-azuretools.vscode-docker": "ui",
-    "ms-vscode-remote.remote-containers": "ui"
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length=79", "--safe"],
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Args": ["--max-line-length=79", "--show-source"],
+  "python.analysis.extraPaths": [
+    "./src"
+  ],
+  "python.pythonPath": "/workspaces/test/.venv/bin/python",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
   },
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
+  "prettier.requireConfig": true,
   "workbench.iconTheme": "vscode-icons",
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "vscode.css-language-features",
-    "editor.foldingStrategy": "indentation"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "git.ignoreLimitWarning": true
+  "workbench.colorTheme": "Visual Studio Dark"
 }

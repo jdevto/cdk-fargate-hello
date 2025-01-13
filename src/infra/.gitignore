@@ -1,0 +1,30 @@
+# Editor swap files
+*.swp
+
+# Python artifacts
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+*.log
+
+# Virtual environments
+.venv/
+
+# Package manager lock files
+package-lock.json
+Pipfile.lock
+poetry.lock
+
+# AWS CDK specific files
+.cdk.staging/
+cdk.out/
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.iml
+
+# System files
+.DS_Store
+Thumbs.db
