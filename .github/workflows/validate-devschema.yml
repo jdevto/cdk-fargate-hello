@@ -1,16 +1,24 @@
 name: validate-devschema
+
 on:
   pull_request:
     paths:
-      - '**/devcontainer.json'
+      - "**/devcontainer.json"
   push:
     branches:
       - main
     paths:
-      - '**/devcontainer.json'
+      - "**/devcontainer.json"
 
 jobs:
-  validate-devschema:
-    uses: jdevto/actions/.github/workflows/validate-devschema.yml@main
-    with:
-      verbose: true
+  validate-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
+
+      - name: Validate Devcontainer Schema
+        uses: actionsforge/actions-validate-devschema@v1
+        with:
+          verbose: true
+
